@@ -6,12 +6,11 @@ Personal Claude Code plugin marketplace.
 
 ### no-coauthor
 
-Strips the `Co-Authored-By:` trailer from git commit commands before they run, so
-Claude Code commits are attributed to you alone (no co-author / contributor entry).
+Strips the `Co-Authored-By:` trailer from git commit commands before they run.
 
 Mechanism: a `PreToolUse` hook on the `Bash` tool. When a `git commit` command
 carries a `Co-Authored-By` line, the hook removes that line and returns the cleaned
-command via `updatedInput`. It emits no `permissionDecision`, so your normal
+command via `updatedInput`. It emits no `permissionDecision`, so the normal
 commit-approval flow is unchanged.
 
 ## Install
