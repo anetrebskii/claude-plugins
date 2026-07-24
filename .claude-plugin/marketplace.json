@@ -1,0 +1,14 @@
+{
+  "name": "anetrebskii",
+  "owner": {
+    "name": "anetrebskii"
+  },
+  "plugins": [
+    {
+      "name": "no-coauthor",
+      "source": "./plugins/no-coauthor",
+      "description": "Strips the Co-Authored-By trailer from git commit commands before they run.",
+      "version": "1.0.0"
+    }
+  ]
+}

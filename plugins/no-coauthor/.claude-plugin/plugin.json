@@ -1,0 +1,10 @@
+{
+  "name": "no-coauthor",
+  "displayName": "No Co-Author Trailer",
+  "version": "1.0.0",
+  "description": "Removes the Co-Authored-By trailer from git commits before they run, so Claude Code commits do not add co-author attribution.",
+  "author": {
+    "name": "anetrebskii"
+  },
+  "hooks": "./hooks/hooks.json"
+}
