@@ -1,8 +1,8 @@
 {
   "name": "no-coauthor",
   "displayName": "No Co-Author Trailer",
-  "version": "1.0.0",
-  "description": "Strips the Co-Authored-By trailer from git commit commands before they run.",
+  "version": "1.1.0",
+  "description": "Strips Claude Co-Authored-By trailers from git and gh commands before they run.",
   "author": {
     "name": "anetrebskii"
   },
