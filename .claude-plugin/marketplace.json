@@ -14,7 +14,7 @@
       "name": "vpn-guard",
       "source": "./plugins/vpn-guard",
       "description": "Require an allowed public IPv4 address before prompts and tool-driven model continuations.",
-      "version": "1.0.1"
+      "version": "1.0.2"
     }
   ]
 }

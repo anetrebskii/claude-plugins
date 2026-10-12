@@ -1,5 +1,5 @@
 {
   "name": "vpn-guard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Require an allowed public IPv4 address before supported model-processing steps."
 }
