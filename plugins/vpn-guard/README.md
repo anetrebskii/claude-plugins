@@ -48,6 +48,6 @@ codex plugin marketplace upgrade anetrebskii
 codex plugin add vpn-guard@anetrebskii
 ```
 
-Then review and trust the hook definition in Codex. The plugin also appears under **Alex's Personal Plugins** in the Codex desktop Plugins Directory. Installing the plugin alone does not trust its hooks. Start a new conversation after installation.
+Start a fresh Codex CLI session and enter `/hooks`. Under `UserPromptSubmit`, review and trust the VPN Guard hook. The plugin also appears under **Alex's Personal Plugins** in the Codex desktop Plugins Directory. Installing the plugin alone does not trust its hooks. Start a new conversation after installation.
 
 For local development, use `codex plugin marketplace add /absolute/path/to/claude-plugins` instead.

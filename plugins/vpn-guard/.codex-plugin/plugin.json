@@ -1,0 +1,6 @@
+{
+  "name": "vpn-guard",
+  "version": "1.0.1",
+  "description": "Require an allowed public IPv4 address before submitted prompts.",
+  "hooks": "./hooks/codex-hooks.json"
+}
