@@ -46,9 +46,14 @@ Tests:
 bash plugins/no-coauthor/tests/run.sh
 ```
 
+### vpn-guard
+
+Checks the public IPv4 address against a configured allowlist before submitted prompts. Claude Code also checks before tool-driven model continuations. Includes a Codex plugin manifest and marketplace entry; Codex currently checks submitted prompts only. See [VPN Guard setup and limits](plugins/vpn-guard/README.md).
+
 ## Install
 
 ```
 /plugin marketplace add anetrebskii/claude-plugins
 /plugin install no-coauthor@anetrebskii
+/plugin install vpn-guard@anetrebskii
 ```

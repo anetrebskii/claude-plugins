@@ -9,6 +9,12 @@
       "source": "./plugins/no-coauthor",
       "description": "Strips Claude Co-Authored-By trailers from git and gh commands before they run.",
       "version": "1.1.0"
+    },
+    {
+      "name": "vpn-guard",
+      "source": "./plugins/vpn-guard",
+      "description": "Require an allowed public IPv4 address before prompts and tool-driven model continuations.",
+      "version": "1.0.0"
     }
   ]
 }

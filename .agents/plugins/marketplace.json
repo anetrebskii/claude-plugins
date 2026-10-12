@@ -1,0 +1,20 @@
+{
+  "name": "alex-personal-plugins",
+  "interface": {
+    "displayName": "Alex's Personal Plugins"
+  },
+  "plugins": [
+    {
+      "name": "vpn-guard",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vpn-guard"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer tools"
+    }
+  ]
+}
