@@ -44,8 +44,10 @@ Add the published repository as a marketplace:
 
 ```sh
 codex plugin marketplace add anetrebskii/claude-plugins
+codex plugin marketplace upgrade anetrebskii
+codex plugin add vpn-guard@anetrebskii
 ```
 
-Then open the Codex desktop Plugins Directory, select **Alex's Personal Plugins**, install **vpn-guard**, and review and trust its hook definition. Installing the plugin alone does not trust its hooks. Start a new conversation after installation.
+Then review and trust the hook definition in Codex. The plugin also appears under **Alex's Personal Plugins** in the Codex desktop Plugins Directory. Installing the plugin alone does not trust its hooks. Start a new conversation after installation.
 
 For local development, use `codex plugin marketplace add /absolute/path/to/claude-plugins` instead.
