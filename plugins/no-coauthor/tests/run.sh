@@ -11,7 +11,9 @@ fails=0
 check() {
   local name=$1 cmd=$2 expect=$3 out got
   out=$(printf '%s' "$cmd" | jq -Rs '{tool_name:"Bash",tool_input:{command:.,description:"d"}}' | bash "$hook")
-  if [ -z "$out" ]; then
+  if [ "$(printf '%s' "$out" | jq -r '.hookSpecificOutput.permissionDecision // ""')" = "deny" ]; then
+    got=DENY
+  elif [ -z "$out" ]; then
     got=PASSTHROUGH
   else
     got=$(printf '%s' "$out" | jq -r '.hookSpecificOutput.updatedInput.command')
@@ -73,9 +75,9 @@ check "human co-author kept" \
   'git commit -m "fix" -m "Co-Authored-By: Dev <dev@example.com>"' \
   PASSTHROUGH
 
-check "trailer-only message is not emptied" \
+check "trailer-only message is denied" \
   "git commit -m \"$T\"" \
-  PASSTHROUGH
+  DENY
 
 check "searching for the trailer" \
   "git log --grep=\"$T\"" \

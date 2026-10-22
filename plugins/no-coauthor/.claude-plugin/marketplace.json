@@ -1,0 +1,15 @@
+{
+  "name": "no-coauthor-local",
+  "description": "Local source install of the personal no-coauthor plugin.",
+  "owner": {
+    "name": "anetrebskii"
+  },
+  "plugins": [
+    {
+      "name": "no-coauthor",
+      "source": "./",
+      "version": "1.2.0",
+      "description": "Remove Claude attribution automatically."
+    }
+  ]
+}

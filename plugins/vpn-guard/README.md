@@ -21,7 +21,22 @@ export VPN_GUARD_ALLOWED_IPS_FILE="$HOME/.config/vpn-guard/allowed-ips.txt"
 
 Both Claude Code and Codex use the same checker and settings. Desktop applications must inherit this environment variable; otherwise they use the bundled allowlist. Plugin updates can replace bundled settings.
 
-The checker requires `curl`. On every hook invocation it requests the public IPv4 address from `https://api.ipify.org` over HTTPS, with an eight-second timeout, and compares the response exactly against the allowlist. It does not use VPN connection status or a custom checker as a bypass. The lookup itself is an outbound request.
+The checker requires `curl`. Every hook invocation performs a fresh IPv4 lookup over HTTPS and compares it exactly against the allowlist. An unapproved IP blocks immediately. Failed or malformed lookups get up to three attempts: ipify, [Amazon's IP endpoint](https://docs.aws.amazon.com/batch/latest/userguide/create-a-base-security-group.html), then ipify again. Each attempt has a three-second limit, with a ten-second deadline for verification. The lookup itself is an outbound request; connection status and earlier successful checks cannot bypass it.
+
+## Diagnostics
+
+Failures, recovery and IP mismatches are logged to `${XDG_STATE_HOME:-$HOME/.local/state}/vpn-guard/checks.log`. The log records the endpoint, attempt, elapsed seconds, curl exit code and error. Successful first attempts stay silent. Logs contain no prompts or tool output.
+
+Set `VPN_GUARD_LOG_FILE` before starting Claude to use another log path. Logging failure does not change the IP-check result. Final lookup errors show the diagnostics path; restore connectivity and resubmit after a blocked check.
+
+Recovery states and limits are documented in [the UX document](../../doc/ux/vpn-guard-recovery.md).
+
+Run deterministic checks without network access:
+
+```sh
+python3 plugins/vpn-guard/tests/test_check_vpn.py
+VPN_TEST_SHELL=/bin/bash python3 plugins/vpn-guard/tests/test_check_vpn.py
+```
 
 ## Claude Code
 
@@ -35,6 +50,15 @@ claude plugin install vpn-guard@anetrebskii --scope user
 ```
 
 Restart Claude Code after installation so it loads the hooks.
+
+To install unpublished local changes, register the source checkout and update the existing plugin:
+
+```sh
+claude plugin marketplace add /absolute/path/to/claude-plugins
+claude plugin update vpn-guard@anetrebskii --scope user
+```
+
+This declares the checkout in `extraKnownMarketplaces` in `~/.claude/settings.json`. To restore published updates, remove that new `anetrebskii` entry, then run `claude plugin marketplace add anetrebskii/claude-plugins`. Keep other marketplace declarations. The installed version remains until another update.
 
 ## Codex
 

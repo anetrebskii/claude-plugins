@@ -1,15 +1,15 @@
 {
   "name": "no-coauthor",
-  "displayName": "No Co-Author Trailer",
-  "version": "1.1.0",
-  "description": "Strips Claude Co-Authored-By trailers from git and gh commands before they run.",
+  "displayName": "No Claude Attribution",
+  "version": "1.2.0",
+  "description": "Automatically remove Claude co-author trailers and generated-by footers from git, gh and GitHub tool calls.",
   "author": {
     "name": "anetrebskii"
   },
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash|mcp__.*github.*",
         "hooks": [
           {
             "type": "command",
@@ -18,5 +18,13 @@
         ]
       }
     ]
+  },
+  "userConfig": {
+    "rtk_hook": {
+      "type": "string",
+      "title": "RTK hook path",
+      "description": "Optional RTK rewrite hook to run before attribution removal, replacing a separate RTK PreToolUse hook.",
+      "default": ""
+    }
   }
 }

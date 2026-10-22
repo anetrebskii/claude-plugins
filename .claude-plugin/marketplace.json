@@ -1,5 +1,6 @@
 {
   "name": "anetrebskii",
+  "description": "Personal Claude Code plugins for VPN checks and commit attribution.",
   "owner": {
     "name": "anetrebskii"
   },
@@ -7,14 +8,14 @@
     {
       "name": "no-coauthor",
       "source": "./plugins/no-coauthor",
-      "description": "Strips Claude Co-Authored-By trailers from git and gh commands before they run.",
-      "version": "1.1.0"
+      "description": "Automatically remove Claude co-author trailers and generated-by footers from git, gh and GitHub tool calls.",
+      "version": "1.2.0"
     },
     {
       "name": "vpn-guard",
       "source": "./plugins/vpn-guard",
       "description": "Require an allowed public IPv4 address before prompts and tool-driven model continuations.",
-      "version": "1.0.2"
+      "version": "1.0.4"
     }
   ]
 }
